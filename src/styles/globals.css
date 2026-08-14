@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-dark: rgba(20, 20, 20, 0.9);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #050505;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar for a cinematic feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.serif { font-family: var(--font-serif); }
+.sans { font-family: var(--font-sans); }
+
+.scene-container {
+  position: relative;
+  width: 100vw;
+}
+
+.environment-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.story-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Atmospheric Drift Physics */
+@keyframes drift {
+  0% { transform: translateX(-5%); }
+  50% { transform: translateX(5%); }
+  100% { transform: translateX(-5%); }
+}
+
+/* --- CINEMATIC CLOUD PHYSICS --- */
+/* Clouds travel continuously from left to right */
+@keyframes panCloud {
+  0% { transform: translate3d(-300px, 0, 0); }
+  100% { transform: translate3d(120vw, 0, 0); }
+}
+
+.cloud-slow {
+  position: absolute;
+  animation: panCloud 180s linear infinite;
+  will-change: transform;
+}
+
+.cloud-med {
+  position: absolute;
+  animation: panCloud 120s linear infinite;
+  will-change: transform;
+}
+
+.cloud-fast {
+  position: absolute;
+  animation: panCloud 80s linear infinite;
+  will-change: transform;
+}
+
+/* Let's delay some clouds so they don't all clump together */
+.delay-1 { animation-delay: -40s; }
+.delay-2 { animation-delay: -100s; }
+.delay-3 { animation-delay: -10s; }
