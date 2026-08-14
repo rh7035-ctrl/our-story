@@ -1,4 +1,3 @@
-import React from 'react';
 import { Environment } from './components/Environment';
 import { StoryScroll } from './components/StoryScroll';
 import { AudioController } from './components/AudioController';
